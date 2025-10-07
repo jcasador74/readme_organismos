@@ -1,6 +1,6 @@
-# matter-carousel
+# matter-extradata
 
-Matter-carousel genera un carrusel dinámico de tarjetas basado en el componente `matter-card`. Permite cargar los datos de las tarjetas de forma local mediante el atributo `cards-data` o desde un endpoint remoto usando `dataUrl`. Forma parte del catálogo corporativo de Web Components de la Junta de Andalucía.
+Matter-extradata muestra información adicional sobre un contenido, como el responsable, la fecha de última actualización y opciones de descarga o suscripción. Forma parte del catálogo corporativo de Web Components de la Junta de Andalucía.
 
 ## Instalación y servidor de desarrollo
 
@@ -17,7 +17,7 @@ Para levantar el web component en local, se deberá seguir una serie de pasos en
     ```bash
     git clone {{enlace HTTPS copiado}}
     ```
-    Tras la ejecución de este comando, se habrá creado la carpeta del proyecto `matter-carousel`.
+    Tras la ejecución de este comando, se habrá creado la carpeta del proyecto `matter-extradata`.
 5. Configurar el registro privado de los componentes corporativos:
     ```bash
     npm config set @matter:registry=https://nexus.paas.junta-andalucia.es/repository/msd.npm-private/
@@ -41,60 +41,45 @@ Para hacer uso de este web-component se deberán realizar dos sencillos pasos:
 
 1. Importar el compilado del web-component en el proyecto actual:
     ```bash
-    import '@matter/matter-carousel/dist/matter-carousel';
+    import '@matter/matter-extradata/dist/matter-extradata';
     ```
 2. Llamar a dicho web-component desde el fichero `.html` donde se quiera mostrar:
     ```html
-    <matter-carousel></matter-carousel>
+    <matter-extradata></matter-extradata>
     ```
 
 ---
 
-## Ejemplos de uso
+## Ejemplo de uso
 
-### Carrusel con datos locales
 ```html
-<matter-carousel
-  cards-data='[
-    {
-      "imageMainCard": "https://placehold.co/800x450?text=16:9",
-      "title": "Ejemplo de tarjeta",
-      "urlLink": "https://www.juntadeandalucia.es",
-      "description": "Descripción de la tarjeta"
-    }
+<matter-extradata
+  idElement="extra-info"
+  responsable='{"nombre": "Consejería", "url": "https://example.com"}'
+  ultimaActualizacion="29 de Julio de 2025"
+  descargas='[
+    { "icon": "fa-file-csv", "text": "CSV", "link": "#" },
+    { "icon": "fa-file-pdf", "text": "PDF", "link": "#" }
   ]'
-></matter-carousel>
-```
-
----
-
-### Carrusel con datos desde una URL
-```html
-<matter-carousel
-  dataUrl="https://juntadeandalucia.es/ssdigitales/festa/storybook/matter-carousel-1.2.0.json"
-></matter-carousel>
-```
-
----
-
-### Carrusel mostrando una sola tarjeta
-```html
-<matter-carousel
-  dataUrl="https://juntadeandalucia.es/ssdigitales/festa/storybook/matter-carousel-1.2.0.json"
-  onlyOne="true"
-></matter-carousel>
+  suscripciones='[
+    { "icon": "fa-envelope", "text": "Correo", "link": "#" },
+    { "icon": "fa-rss", "text": "RSS", "link": "#" }
+  ]'
+></matter-extradata>
 ```
 
 ---
 
 ## Props
 
-| Prop               | Tipo     | Descripción                                                                                   |
-| :----------------- | :------- | :-------------------------------------------------------------------------------------------- |
-| `stylesheetVersion` | string   | Versión de la hoja de estilos a usar. Por defecto `"latest"`.                                |
-| `dataUrl`           | string   | URL desde donde se cargan los datos del carrusel.                                            |
-| `onlyOne`           | boolean  | Si es `true`, el carrusel mostrará solo una tarjeta a la vez.                                |
-| `cardsData`         | array    | Array de objetos con los datos de las tarjetas del carrusel.                                 |
+| Prop                 | Tipo     | Descripción                                                                                   |
+| :------------------- | :------- | :-------------------------------------------------------------------------------------------- |
+| `stylesheetVersion`  | string   | Versión de la hoja de estilos a usar. Por defecto `"latest"`.                                |
+| `idElement`          | string   | Identificador único del bloque de información adicional.                                     |
+| `responsable`        | object   | Objeto con el nombre y la URL del responsable. Ejemplo: `{ "nombre": "Junta de Andalucía", "url": "#" }`. |
+| `ultimaActualizacion`| string   | Fecha de la última actualización.                                                            |
+| `descargas`          | array    | Lista de objetos con opciones de descarga. Ejemplo: `[ { "icon": "fa-file-pdf", "text": "PDF", "link": "#" } ]`. |
+| `suscripciones`      | array    | Lista de objetos con opciones de suscripción. Ejemplo: `[ { "icon": "fa-rss", "text": "RSS", "link": "#" } ]`. |
 
 ---
 
@@ -156,12 +141,12 @@ Para añadir una historia al Storybook corporativo, se deben realizar los siguie
       new CopyPlugin({
         patterns: [
           { from: "README.md", to: 'story/' + PackageType + '/' + PackageName },
-          { from: "./demo/matter-carousel.stories.js", to: 'story/' + PackageType + '/' + PackageName },
+          { from: "./demo/matter-extradata.stories.js", to: 'story/' + PackageType + '/' + PackageName },
         ],
       }),
     ];
     ```
-4. En la carpeta `demo/`, incluir el fichero `matter-carousel.stories.js` que monte la historia en el Storybook.
+4. En la carpeta `demo/`, incluir el fichero `matter-extradata.stories.js` que monte la historia en el Storybook.
 
 ---
 
