@@ -1,6 +1,6 @@
-# matter-accordion
+# matter-modal
 
-MatterAccordion es un web component que genera elemento acordeón. Forma parte del catálogo corporativo de Web Components de la Junta de Andalucía.
+MatterModal es un web component que genera el elemento "Modal". Forma parte del catálogo corporativo de Web Components de la Junta de Andalucía.
 
 ## Instalación  y servidor de desarrollo
 
@@ -88,13 +88,13 @@ Para añadir una historia al storybook es necesario realizar los siguientes camb
 
 ```
 {
-  "name": "@matter/matter-accordion",
+  "name": "@matter/matter-modal",
   "type": "organismos",
   "version": "1.2.0",
   "description": "A web component of MSD JdA Catalog",
   "author": "Junta de Andalucía",
   "license": "EUPL-1.2",
-  "main": "src/matter-accordion",
+  "main": "src/matter-modal",
 ...
 ...
  "devDependencies": {
@@ -120,7 +120,7 @@ const PackageName = package.name.replace('@matter/', '');
     new CopyPlugin({
       patterns: [
         { from: "README.md", to: 'story' + '/' + PackageType + '/' + PackageName },
-        { from: "./demo/matter-accordion.stories.js", to: 'story' + '/' + PackageType + '/' + PackageName },
+        { from: "./demo/matter-modal.stories.js", to: 'story' + '/' + PackageType + '/' + PackageName },
       ],
     }),  ],
 

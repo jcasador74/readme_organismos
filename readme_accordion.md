@@ -1,6 +1,6 @@
 # matter-accordion
 
-MatterAccordion es un web component que genera elemento acordeón. Forma parte del catálogo corporativo de Web Components de la Junta de Andalucía.
+MatterAccordion es un web component que genera el elemento "Acordeón". Forma parte del catálogo corporativo de Web Components de la Junta de Andalucía.
 
 ## Instalación  y servidor de desarrollo
 

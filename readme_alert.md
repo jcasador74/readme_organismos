@@ -1,6 +1,6 @@
 # matter-alert
 
-MatterAlert es un web component que genera una card. Forma parte del catálogo corporativo de Web Components de la Junta de Andalucía.
+MatterAlert es un web component que genera el elemento "Alerta". Forma parte del catálogo corporativo de Web Components de la Junta de Andalucía.
 
 ## Instalación  y servidor de desarrollo
 
